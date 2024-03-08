@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/navbar.css">
+    <link rel="stylesheet" href="/static/css/content.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/logo.svg" type="image/x-icon">
+</head>
+
+<body>
+
+    <div class="topnav">
+        <!-- <div class="nav__image">
+            <img src="./images/logo2.svg" alt="Logo" class="nav__logo">
+        </div> -->
+        <a href="#home" onclick="showContent('home')">Inicio</a>
+        <a href="#settings" onclick="showContent('settings')">Agregar Alumno</a>
+        <a href="#asistencia" onclick="showContent('asistencia')">Asistencia</a>
+        <!-- <a href="#contact" onclick="showContent('contact')">Contact</a>
+        <a href="#about" onclick="showContent('about')">About</a> -->
+    </div>
+
+    <div id="homeContent" style="padding-left:16px; display: none;">
+        <div id="imageContainer" class="imageContainer" style="max-width: 60%;">
+            <div style="min-width: 50%; min-height: 100%; padding-left: 10px;">
+                <button id="wsConnectBtn" class="greenBtn">CONECTAR</button>
+                <button id="wsDisConnectBtn" class="redBtn" style="display: none;">DESCONECTAR</button>
+
+                <img id="video-home" style="margin-top: 30px; display: none; border-radius: 5px;" src="" width="100%" height="100%" />
+            </div>
+
+        </div>
+
+        <div style="margin-top: 100px; width: 100%;">
+            <h3 style="width: 100%;">Configuración de usuarios</h3>
+            <table class="table" id="dynamicTable">
+                <thead>
+                    <tr>
+                        <th>USERNAME</th>
+                        <!-- <th>ID</th> -->
+                        <th>NOMBRE</th>
+                        <th>CÓDIGO UNIVERSITARIO</th>
+                        <!-- <th>LED</th> -->
+                        <!-- <th>INICIO</th> -->
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="asistenciaContent" style="padding-left:16px; display: none;">
+        <div style="margin-top: 50px;  margin-left: 40px; margin-right: 100px;">
+            <h3 style="width: 100%;">Asistencia de alumnos</h3>
+            <div class="fecha">
+                <input type="date" id="fechaAsistencia"> <!-- Campo de selección de fecha -->
+                <button id="irBtn" class="btn btn-primary">IR</button> <!-- Botón "IR" -->
+            </div>
+            <table class="table" id="dynamicTable2">
+                <thead>
+                    <tr>
+                        <!-- <th>ID</th> -->
+                        <th>CÓDIGO UNIV</th>
+                        <th>NOMBRE COMPLETO</th>
+                        <th>ESTADO</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <button id="guardarBtn2" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+    <div id="settingsContent" style="padding-left:16px; display: none;">
+
+        <div id="imageSettingsContainer" class="imageContainer">
+            <div style="min-width: 50%; min-height: 100%; padding-left: 10px;">
+                <div id="cameraBtnContainer" class="row no-gutters">
+                    <div class="col-6 pr-1"> <!-- Ajusta el ancho de la columna y agrega un poco de espacio a la derecha -->
+                        <button id="selectCameraBtn" class="redBtn">
+                            CÁMARAS
+                        </button>
+                    </div>
+                    <div class="col-6 pl-1"> <!-- Ajusta el ancho de la columna y agrega un poco de espacio a la izquierda -->
+                        <button id="captureBtn" class="greenBtn">
+                            CAPTURAR
+                        </button>
+                    </div>
+                </div>
+
+                <div id="btnSaveRetakeContainer" class="row no-gutters">
+                    <div class="col-6" style="padding-right: 2px;">
+                        <button id="addBtn" class="greenBtn">
+                            AGREGAR
+                        </button>
+                    </div>
+                    <div class="col-6">
+                        <button id="retakeBtn" class="redBtn">
+                            CÁMARA
+                        </button>
+                    </div>
+                </div>
+
+                <video id="video-settings" width="100%" height="100%" autoplay></video>
+                <img id="snapshot" style="margin-top: 30px;" class="snapshotImgContainer">
+            </div>
+
+            <div style="min-width: 50%; min-height: 100%; padding-left: 10px;">
+                <div id="saveAllBtnContainer" style="width: 100%;">
+                    <!-- <button style="width: 49%;" id="saveAllBtn" class="saveAllBtn">GUARDAR</button> -->
+                    <button style="width: 49%;" id="saveAllBtn" class="greenBtn">GUARDAR</button>
+                    <button style="width: 49%;" id="deleteLastBtn" class="redBtn">ELIMINAR</button>
+                </div>
+                <div class="wrapper">
+                    <div class="image_container_box content">
+                        <img id="saved-img-0" src="./static/images/default_image.png" style="width: 100%; height: 80%;">
+                    </div>
+                    <div class="image_container_box content">
+                        <img id="saved-img-1" src="./static/images/default_image.png" style="width: 100%; height: 80%;">
+                    </div>
+                    <div class="image_container_box content">
+                        <img id="saved-img-2" src="./static/images/default_image.png" style="width: 100%; height: 80%;">
+                    </div>
+                    <div class="image_container_box content">
+                        <img id="saved-img-3" src="./static/images/default_image.png" style="width: 100%; height: 80%;">
+                    </div>
+                    <div class="image_container_box content">
+                        <img id="saved-img-4" src="./static/images/default_image.png" style="width: 100%; height: 80%;">
+                    </div>
+                    <div class="image_container_box content">
+                        <img id="saved-img-5" src="./static/images/default_image.png" style="width: 100%; height: 80%;">
+                    </div>
+                    <div class="image_container_box content">
+                        <img id="saved-img-6" src="./static/images/default_image.png" style="width: 100%; height: 80%;">
+                    </div>
+                    <div class="image_container_box content">
+                        <img id="saved-img-7" src="./static/images/default_image.png" style="width: 100%; height: 80%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="contactContent" style="padding-left:16px; display: none;">
+        <h2>Contact Content</h2>
+        <p>Contact information and form goes here...</p>
+    </div>
+
+    <div id="aboutContent" style="padding-left:16px; display: none;">
+        <h2>About Content</h2>
+        <p>About us information goes here...</p>
+    </div>
+
+    <!-- Sweet Alert Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <!-- Load JQuery and Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Application javascript Code -->
+    <script src="/static/js/helpers/helper.js"></script>
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/navbar.js"></script>
+    <script src="/static/js/home.js"></script>
+    <script src="/static/js/settings.js"></script>
+    <script src="/static/js/asistencia.js"></script>
+
+</body>
+
+</html>

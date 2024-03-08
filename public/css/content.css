@@ -1,0 +1,133 @@
+/* #homeContent {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */
+:root {
+  scroll-behavior: smooth;
+  --blue: #48a9ebde;
+  --orange: #f0ab5dde;
+  --background: #F9F8FE;
+  --galaxy: #7a4eac;
+}
+
+body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  margin: 0;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 90%;
+  height: auto;
+  margin-top: 30px;
+}
+
+.snapshotImgContainer {
+  width: 100%;
+  height: auto;
+  border: 2px solid #2ab3dc;
+  display: block;
+  margin: 0 auto;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 30px;
+  /* max-width: 50%; */
+}
+
+.greenBtn,
+.redBtn {
+  background-color: var(--galaxy);
+  color: white;
+  padding: 1rem 3rem;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  justify-self: center;
+  margin-bottom: 1.5rem;
+}
+
+.greenBtn {
+  /* background-color: #4CAF50; */
+  background-color: var(--galaxy);
+  color: white;
+  border: none;
+}
+
+.redBtn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.saveAllBtn {
+  /* background-color: #4CAF50; */
+  background-color: var(--galaxy);
+  color: white;
+  border: none;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/*
+    IMAGE BOARD CSS
+*/
+
+.image_container_box {
+  background-color: #000000;
+  max-width: 20%;
+  padding: 10px 20px;
+  margin: 10px 10px 10px 0;
+  color: #f1f1f1;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+
+.image_container_box .number {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.image_container_box .title {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.image_container_box .subtitle {
+  text-transform: uppercase;
+  font-size: 8px;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  margin: 10px;
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+  padding: 10px;
+  min-width: 100px;
+  flex-basis: calc(25% - 10px);
+}

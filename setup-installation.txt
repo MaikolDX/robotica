@@ -1,0 +1,49 @@
+ssh pi@raspberrypi-001.local
+
+1. expand File system with:  
+    * check if file system is expanded:
+        ** run: df -h
+    * to expand:
+        ** run: sudo raspi-config  
+    * use arrow keys to 
+        ** move to "Advanced Options"
+    * use "Enter" to select "Advanced Options"
+    * use "Enter" to select "Expand Filesystem"
+    * press "Right Arrow Key" twice to htghlight "Finish"
+    * you will be asked to reboot. select "YES" and press enter.
+
+2. reboot your raspberry pi
+    * run: sudo reboot
+    * or shutdown & restart 
+        ** run: sudo shutdown now
+
+2. expand the CONF_SWAPSIZE to 4096
+    * run: sudo nano /etc/dphys-swapfile
+    * Change CONF_SWAPSIZE=100 to CONF_SWAPSIZE=4096 and save / exit nano
+    * Press ctrl-x and then y to save and exit nano.
+
+3. install opencv (19 minutes):
+    * run: chmod +x install-1-cv.sh
+    * run: sudo ./install-1-cv.sh
+    * check if opencv is installed:
+        ** run: python
+        ** run: import cv2
+        ** to exit python run: quit()
+        ** if not installed, run: 
+            *** pip3 install --upgrade --force-reinstall --no-cache-dir opencv-python==4.5.1.48
+
+4. install face recognition (2 minutes):
+    * run: chmod +x install-2-face-recognition.sh
+    * run: sudo ./install-2-face-recognition.sh
+
+5. revert the CONF_SWAPSIZE back to 100
+    * run: sudo nano /etc/dphys-swapfile
+    * Change CONF_SWAPSIZE=4096 to CONF_SWAPSIZE=100 and save / exit nano
+    * Press ctrl-x and then y to save and exit nano.
+
+6. install other application dependencies:
+    * run: chmod +x install-3.sh
+    * run: sudo ./install-3.sh
+
+7. run: python main.py
+    
